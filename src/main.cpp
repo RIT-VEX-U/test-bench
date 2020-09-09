@@ -9,8 +9,8 @@
 
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller          master                    
-// Motor[0 - 9]        motor         1 - 10   
+// master              controller                    
+// motors[0 - 9]       motor         1 - 10   
 
 #include "vex.h"
 #include "hardware.h"
