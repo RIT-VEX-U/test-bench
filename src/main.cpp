@@ -26,13 +26,14 @@ void toggleMotor(motor& Motor, bool& reverse) {
 
   if (Motor.power() != 0) {
     Motor.stop();
-    task::sleep(100);
   } else {
     // TODO: allow adjustment of speed (maybe thru joysticks?)
     Motor.setVelocity(50, percentUnits::pct);
     Motor.spin(dir);
-    task::sleep(100);
   }
+
+  // Wait 100ms to prevent toggling motors on and off repeatedly
+  task::sleep(100);
 }
 
 void killMotors() {
@@ -52,30 +53,14 @@ int main() {
     // Check if user is requesting reverse spin
     bool reverse = Hardware::master.ButtonL1.pressing();
 
-    // Individual motor controls
-    // TODO: do something bigger brained than 1000 if statements
-    if (Hardware::master.ButtonA.pressing()) { // 1
-      toggleMotor(Hardware::motors[0], reverse);
-    } else if (Hardware::master.ButtonX.pressing()) { // 2
-      toggleMotor(Hardware::motors[1], reverse);
-    } else if (Hardware::master.ButtonY.pressing()) { // 3
-      toggleMotor(Hardware::motors[2], reverse);
-    } else if (Hardware::master.ButtonB.pressing()) { // 4
-      toggleMotor(Hardware::motors[3], reverse);
-    } else if (Hardware::master.ButtonRight.pressing()) { // 5
-      toggleMotor(Hardware::motors[4], reverse);
-    } else if (Hardware::master.ButtonUp.pressing()) { // 6
-      toggleMotor(Hardware::motors[5], reverse);
-    } else if (Hardware::master.ButtonLeft.pressing()) { // 7
-      toggleMotor(Hardware::motors[6], reverse);
-    } else if (Hardware::master.ButtonDown.pressing()) { // 8
-      toggleMotor(Hardware::motors[7], reverse);
-    } else if (Hardware::master.ButtonR1.pressing()) { // 9
-      toggleMotor(Hardware::motors[8], reverse);
-    } else if (Hardware::master.ButtonR2.pressing()) { // 10
-      toggleMotor(Hardware::motors[9], reverse);
+    // Loop through all defined motor buttons, toggling
+    // their corresponding motor if button is being pressed
+    for (int i = 0; i < 10; i++) {
+      if (Hardware::motorButtons[i].pressing()) {
+        toggleMotor(Hardware::motors[i], reverse);
+      }
     }
-
+    
     // Stop all motors
     if (Hardware::master.ButtonL2.pressing()) {
       killMotors();

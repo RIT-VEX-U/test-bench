@@ -8,3 +8,7 @@ motor Hardware::motors[] = {motor(PORT1, ratio18_1, false), motor(PORT2, ratio18
                             motor(PORT4, ratio18_1, false), motor(PORT5, ratio18_1, false), motor(PORT6, ratio18_1, false),
                             motor(PORT7, ratio18_1, false), motor(PORT8, ratio18_1, false), motor(PORT9, ratio18_1, false),
                             motor(PORT10, ratio18_1, false)};
+
+controller::button Hardware::motorButtons[] = {master.ButtonA, master.ButtonX, master.ButtonY, master.ButtonB,
+                                               master.ButtonRight, master.ButtonUp, master.ButtonLeft, master.ButtonDown,
+                                               master.ButtonR1, master.ButtonR2};
