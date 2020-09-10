@@ -14,6 +14,7 @@
 
 #include "vex.h"
 #include "hardware.h"
+#include "screen.h"
 
 using namespace vex;
 
@@ -28,7 +29,7 @@ void toggleMotor(motor& Motor, bool& reverse) {
     task::sleep(100);
   } else {
     // TODO: allow adjustment of speed (maybe thru joysticks?)
-    Motor.setVelocity(50, velocityUnits::rpm);
+    Motor.setVelocity(50, percentUnits::pct);
     Motor.spin(dir);
     task::sleep(100);
   }
@@ -44,6 +45,8 @@ void killMotors() {
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  // Display instructions on brain
+  displayBrain();
 
   while (true) {
     // Check if user is requesting reverse spin
