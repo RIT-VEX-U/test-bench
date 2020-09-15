@@ -12,6 +12,9 @@ namespace Hardware {
   // Motors along with their corresponding buttons
   extern motor motors[];
   extern controller::button motorButtons[];
+  // Used to prevent chattering where motors will toggle on and off
+  // rapidly if button is held down
+  extern bool motorButtonsDebounce[];
 }
 
 #endif

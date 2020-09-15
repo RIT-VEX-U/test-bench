@@ -12,3 +12,5 @@ motor Hardware::motors[] = {motor(PORT1, ratio18_1, false), motor(PORT2, ratio18
 controller::button Hardware::motorButtons[] = {master.ButtonA, master.ButtonX, master.ButtonY, master.ButtonB,
                                                master.ButtonRight, master.ButtonUp, master.ButtonLeft, master.ButtonDown,
                                                master.ButtonR1, master.ButtonR2};
+
+bool Hardware::motorButtonsDebounce[10] = {};

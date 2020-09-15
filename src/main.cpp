@@ -28,12 +28,9 @@ void toggleMotor(motor& Motor, bool& reverse) {
     Motor.stop();
   } else {
     // TODO: allow adjustment of speed (maybe thru joysticks?)
-    Motor.setVelocity(50, percentUnits::pct);
+    Motor.setVelocity(100, percentUnits::pct);
     Motor.spin(dir);
   }
-
-  // Wait 100ms to prevent toggling motors on and off repeatedly
-  task::sleep(100);
 }
 
 void killMotors() {
@@ -57,7 +54,15 @@ int main() {
     // their corresponding motor if button is being pressed
     for (int i = 0; i < 10; i++) {
       if (Hardware::motorButtons[i].pressing()) {
-        toggleMotor(Hardware::motors[i], reverse);
+        // Ensure button was depressed prior to this pressing
+        if (!Hardware::motorButtonsDebounce[i]) {
+          toggleMotor(Hardware::motors[i], reverse);
+          // Set debounce flag to prevent rapid toggling
+          Hardware::motorButtonsDebounce[i] = true;
+        }
+      } else {
+        // Reset debounce flag
+        Hardware::motorButtonsDebounce[i] = false;
       }
     }
     
