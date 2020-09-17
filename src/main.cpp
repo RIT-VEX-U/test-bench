@@ -18,18 +18,22 @@
 
 using namespace vex;
 
-void toggleMotor(motor& Motor, bool& reverse) {
+void toggleMotor(int& motorIndex, bool& reverse) {
   // Motor direction (reverse if reverse is true, forward if false)
   directionType dir = reverse ? directionType::rev : directionType::fwd;
 
   // TODO: add output to controller for motor toggle
 
-  if (Motor.power() != 0) {
-    Motor.stop();
+  if (Hardware::motorRunning[motorIndex]) {
+    Hardware::motors[motorIndex].stop();
+
+    Hardware::motorRunning[motorIndex] = false;
   } else {
     // TODO: allow adjustment of speed (maybe thru joysticks?)
-    Motor.setVelocity(100, percentUnits::pct);
-    Motor.spin(dir);
+    Hardware::motors[motorIndex].setVelocity(100, percentUnits::pct);
+    Hardware::motors[motorIndex].spin(dir);
+
+    Hardware::motorRunning[motorIndex] = true;
   }
 }
 
@@ -56,7 +60,7 @@ int main() {
       if (Hardware::motorButtons[i].pressing()) {
         // Ensure button was depressed prior to this pressing
         if (!Hardware::motorButtonsDebounce[i]) {
-          toggleMotor(Hardware::motors[i], reverse);
+          toggleMotor(i, reverse);
           // Set debounce flag to prevent rapid toggling
           Hardware::motorButtonsDebounce[i] = true;
         }

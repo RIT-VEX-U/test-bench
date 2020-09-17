@@ -13,4 +13,5 @@ controller::button Hardware::motorButtons[] = {master.ButtonA, master.ButtonX, m
                                                master.ButtonRight, master.ButtonUp, master.ButtonLeft, master.ButtonDown,
                                                master.ButtonR1, master.ButtonR2};
 
+bool Hardware::motorRunning[10] = {};
 bool Hardware::motorButtonsDebounce[10] = {};
