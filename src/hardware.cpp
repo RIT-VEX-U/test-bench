@@ -10,5 +10,3 @@ controller Hardware::master(controllerType::primary);
 motor Hardware::motor1(PORT1, gearSetting::ratio18_1), Hardware::motor2(PORT2, gearSetting::ratio18_1), Hardware::motor3(PORT3, gearSetting::ratio18_1), 
 Hardware::motor4(PORT4, gearSetting::ratio36_1), Hardware::motor5(PORT5, gearSetting::ratio36_1), Hardware::motor6(PORT6, gearSetting::ratio18_1),
 Hardware::motor7(PORT7, gearSetting::ratio18_1), Hardware::motor8(PORT8, gearSetting::ratio18_1);
-
-double motorSpeed = 50;

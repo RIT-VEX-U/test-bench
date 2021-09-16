@@ -16,9 +16,29 @@
 using namespace vex;
 using namespace Hardware;
 
+double motorSpeed = 50;
+
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+
+  //Increases motor speed by 25% once when R2 is pressed
+    master.ButtonR2.pressed(
+      []()
+      {
+        if (motorSpeed < 100)
+          motorSpeed += 25;
+      }
+    );
+
+    //Decreases motor speed by 25% once when L2 is pressed
+    master.ButtonL2.pressed(
+      []()
+      {
+        if (motorSpeed > 0)
+          motorSpeed -= 25;
+      }
+    );
 
   // Turn on a motor while a button is pressed, and stop it if the button is not pressed.
   while(true)
@@ -72,13 +92,7 @@ int main() {
       motor8.stop();
     
 
-
-    master.ButtonR2.pressed(
-      []()
-      {
-        motorSpeed += 25;
-      }
-    );
+    
   }
 
 }
