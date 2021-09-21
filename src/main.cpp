@@ -14,90 +14,28 @@
 #include "hardware.h"
 
 using namespace vex;
-double velocity = 100.0;
 
-void setMotor(motor M, double v) {
-  M.spin(directionType::fwd, v, percentUnits::pct);
-}
-
-void increaseVelocity() {
-  if (velocity+25.0 < 100.0) {
-      velocity+=25.0;
-  } else {
-    velocity = 100.0;
+directionType getDirection(int32_t percent) {
+  if (percent >= 0) {
+    return directionType::fwd;
   }
+  return directionType::rev;
 }
 
-void decreaseVelocity() {
-  if (velocity-25.0 > 0.0) {
-      velocity-=25.0;
-  } else {
-    velocity = 0.0;
-  }
-}
+void axischange() {
+  controller C = Hardware::master;
 
-void motor1go() {
-  setMotor(Motor1, velocity);
-}
+  int32_t leftVal = -C.Axis3.position();
+  int32_t rightVal = C.Axis2.position();
 
-void motor1stop() {
-  setMotor(Motor1, 0.0);
-}
+  directionType leftDir = getDirection(leftVal);
+  directionType rightDir = getDirection(rightVal);
 
-void motor2go() {
-  setMotor(Motor2, velocity);
-}
+  leftVal = abs(leftVal);
+  rightVal = abs(rightVal); 
 
-void motor2stop() {
-  setMotor(Motor2, 0.0);
-}
-
-void motor3go() {
-  setMotor(Motor3, velocity);
-}
-
-void motor3stop() {
-  setMotor(Motor3, 0.0);
-}
-
-void motor4go() {
-  setMotor(Motor4, velocity);
-}
-
-void motor4stop() {
-  setMotor(Motor4, 0.0);
-}
-
-void motor5go() {
-  setMotor(Motor5, velocity);
-}
-
-void motor5stop() {
-  setMotor(Motor5, 0.0);
-}
-
-void motor6go() {
-  setMotor(Motor6, velocity);
-}
-
-void motor6stop() {
-  setMotor(Motor6, 0.0);
-}
-
-void motor7go() {
-  setMotor(Motor7, velocity);
-}
-
-void motor7stop() {
-  setMotor(Motor7, 0.0);
-}
-
-void motor8go() {
-  setMotor(Motor8, velocity);
-}
-
-void motor8stop() {
-  setMotor(Motor8, 0.0);
+  LeftDrive.spin(leftDir, leftVal, percentUnits::pct);
+  RightDrive.spin(rightDir, rightVal, percentUnits::pct);
 }
 
 int main() {
@@ -105,24 +43,8 @@ int main() {
   vexcodeInit();
   controller Controller = Hardware::master;
 
-  Controller.ButtonA.pressed(&motor1go);
-  Controller.ButtonA.released(&motor1stop);
-  Controller.ButtonB.pressed(&motor2go);
-  Controller.ButtonB.released(&motor2stop);
-  Controller.ButtonX.pressed(&motor3go);
-  Controller.ButtonX.released(&motor3stop);
-  Controller.ButtonY.pressed(&motor4go);
-  Controller.ButtonY.released(&motor4stop);
-  Controller.ButtonRight.pressed(&motor5go);
-  Controller.ButtonRight.released(&motor5stop);
-  Controller.ButtonUp.pressed(&motor6go);
-  Controller.ButtonUp.released(&motor6stop);
-  Controller.ButtonLeft.pressed(&motor7go);
-  Controller.ButtonLeft.released(&motor7stop);
-  Controller.ButtonDown.pressed(&motor8go);
-  Controller.ButtonDown.released(&motor8stop);  
-  Controller.ButtonL2.pressed(&decreaseVelocity);
-  Controller.ButtonR2.pressed(&increaseVelocity);
+  Controller.Axis2.changed(&axischange);
+  Controller.Axis3.changed(&axischange);
 }
 
 
