@@ -12,11 +12,13 @@
 
 #include "vex.h"
 #include "hardware.h"
+#include "operational_control.cpp"
 
 using namespace vex;
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  operationalControl();
 
 }
