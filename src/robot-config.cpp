@@ -12,4 +12,15 @@ brain Brain;
  */
 void vexcodeInit(void) {
   // Nothing to initialize
+
+  motor motor1(0);
+  motor motor2(1);
+  motor motor3(2);
+  motor motor4(3);
+  motor motor5(4);
+  motor motor6(5);
+  motor motor7(6);
+  motor motor8(7);
+  
+
 }
