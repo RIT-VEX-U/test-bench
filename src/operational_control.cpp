@@ -9,19 +9,18 @@
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // ---- END VEXCODE CONFIGURED DEVICES ----
-
+#include "operational_control.h"
 #include "vex.h"
-#include "hardware.h"
 #include "robot-config.h"
 
 using namespace vex;
+using namespace robot_config;
 
 double currentVelocity = 1.0;
 
 void operationalControl(){
 
   while(true){
-
 
     if(master.ButtonA.pressing()){
       motor1.spin(fwd, currentVelocity, pct);

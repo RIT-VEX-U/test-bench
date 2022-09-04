@@ -1,15 +1,17 @@
 using namespace vex;
 
-extern brain Brain;
-extern controller master;
-extern motor motor1;
-extern motor motor2;
-extern motor motor3;
-extern motor motor4;
-extern motor motor5;
-extern motor motor6;
-extern motor motor7;
-extern motor motor8;
+namespace robot_config {
+  extern brain v5_brain;
+  extern controller master;
+  extern motor motor1;
+  extern motor motor2;
+  extern motor motor3;
+  extern motor motor4;
+  extern motor motor5;
+  extern motor motor6;
+  extern motor motor7;
+  extern motor motor8;
+}
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

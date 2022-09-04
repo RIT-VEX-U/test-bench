@@ -11,14 +11,14 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-#include "hardware.h"
-#include "operational_control.cpp"
+#include "operational_control.h"
 
 using namespace vex;
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  
   operationalControl();
 
 }
