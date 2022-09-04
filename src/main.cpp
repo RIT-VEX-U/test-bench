@@ -16,35 +16,61 @@
 
 using namespace vex;
 
+void increase(){
+  motor1.setVelocity(motor1.velocity(percent) + 25, percent);
+  motor2.setVelocity(motor2.velocity(percent) + 25, percent);
+  motor3.setVelocity(motor3.velocity(percent) + 25, percent);
+  motor4.setVelocity(motor4.velocity(percent) + 25, percent);
+  motor5.setVelocity(motor5.velocity(percent) + 25, percent);
+  motor6.setVelocity(motor6.velocity(percent) + 25, percent);
+  motor7.setVelocity(motor7.velocity(percent) + 25, percent);
+  motor8.setVelocity(motor8.velocity(percent) + 25, percent);
+}
+
+void decrease(){
+  motor1.setVelocity(motor1.velocity(percent) - 25, percent);
+  motor2.setVelocity(motor2.velocity(percent) - 25, percent);
+  motor3.setVelocity(motor3.velocity(percent) - 25, percent);
+  motor4.setVelocity(motor4.velocity(percent) - 25, percent);
+  motor5.setVelocity(motor5.velocity(percent) - 25, percent);
+  motor6.setVelocity(motor6.velocity(percent) - 25, percent);
+  motor7.setVelocity(motor7.velocity(percent) - 25, percent);
+  motor8.setVelocity(motor8.velocity(percent) - 25, percent);
+}
+
+
+
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  while(ButtonA){
+  control.ButtonR2.pressed(increase);
+  control.ButtonL2.pressed(decrease);
+
+  while(control.ButtonA.pressing()){
     motor1.spin(forward);
   }
-  while(ButtonB){
+  while(control.ButtonB.pressing()){
     motor2.spin(forward);
   }
-  while(ButtonX){
+  while(control.ButtonX.pressing()){
     motor3.spin(forward);
   }
-  while(ButtonY){
+  while(control.ButtonY.pressing()){
     motor4.spin(forward);
   }
-  while(ButtonRight){
+  while(control.ButtonRight.pressing()){
     motor5.spin(forward);
   }
-  while(ButtonUp){
+  while(control.ButtonUp.pressing()){
     motor6.spin(forward);
   }
-  while(ButtonLeft){
+  while(control.ButtonLeft.pressing()){
     motor7.spin(forward);
   }
-  while(ButtonDown){
+  while(control.ButtonDown.pressing()){
     motor8.spin(forward);
   }
-
 
 
 }

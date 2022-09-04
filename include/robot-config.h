@@ -16,3 +16,5 @@ void vexcodeInit(void);
   extern motor motor6;
   extern motor motor7;
   extern motor motor8;
+
+  extern controller control;
