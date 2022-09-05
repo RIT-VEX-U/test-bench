@@ -20,7 +20,7 @@ using namespace vex;
 using namespace Hardware;
 
 void changeVelocityUp(void){
-  
+  bigGroup.setVelocity(bigGroup.velocity(percentUnits::pct)-25, percentUnits::pct);
 }
 
 void changeVelocityDown(void){
