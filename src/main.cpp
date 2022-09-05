@@ -10,66 +10,63 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
+
+/*
+Zoe Rizzo
+test bench program for 2022 vexu
+09/05/2022
+*/
+
+
 #include "vex.h"
 #include "hardware.h"
 
 
 using namespace vex;
 
+
+double motorVelocity = 1.0; //standard motor velocity 
+
 void increase(){
-  motor1.setVelocity(motor1.velocity(percent) + 25, percent);
-  motor2.setVelocity(motor2.velocity(percent) + 25, percent);
-  motor3.setVelocity(motor3.velocity(percent) + 25, percent);
-  motor4.setVelocity(motor4.velocity(percent) + 25, percent);
-  motor5.setVelocity(motor5.velocity(percent) + 25, percent);
-  motor6.setVelocity(motor6.velocity(percent) + 25, percent);
-  motor7.setVelocity(motor7.velocity(percent) + 25, percent);
-  motor8.setVelocity(motor8.velocity(percent) + 25, percent);
+  //increase all motors velocity by 25%
+  motorVelocity += 0.25; 
 }
 
 void decrease(){
-  motor1.setVelocity(motor1.velocity(percent) - 25, percent);
-  motor2.setVelocity(motor2.velocity(percent) - 25, percent);
-  motor3.setVelocity(motor3.velocity(percent) - 25, percent);
-  motor4.setVelocity(motor4.velocity(percent) - 25, percent);
-  motor5.setVelocity(motor5.velocity(percent) - 25, percent);
-  motor6.setVelocity(motor6.velocity(percent) - 25, percent);
-  motor7.setVelocity(motor7.velocity(percent) - 25, percent);
-  motor8.setVelocity(motor8.velocity(percent) - 25, percent);
+  //decrease all motors velocity by 25%
+  motorVelocity -= 0.25;
 }
-
-
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  control.ButtonR2.pressed(increase);
-  control.ButtonL2.pressed(decrease);
+  control.ButtonR2.pressed(increase); //increase motor velocity by 25%
+  control.ButtonL2.pressed(decrease); //decrease motor velocity by 25%
 
   while(control.ButtonA.pressing()){
-    motor1.spin(forward);
+    motor1.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonB.pressing()){
-    motor2.spin(forward);
+    motor2.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonX.pressing()){
-    motor3.spin(forward);
+    motor3.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonY.pressing()){
-    motor4.spin(forward);
+    motor4.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonRight.pressing()){
-    motor5.spin(forward);
+    motor5.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonUp.pressing()){
-    motor6.spin(forward);
+    motor6.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonLeft.pressing()){
-    motor7.spin(forward);
+    motor7.spin(forward, motorVelocity, pct);
   }
   while(control.ButtonDown.pressing()){
-    motor8.spin(forward);
+    motor8.spin(forward, motorVelocity, pct);
   }
 
 
