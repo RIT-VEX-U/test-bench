@@ -13,6 +13,8 @@ brain Brain;
   motor motor6(5);
   motor motor7(6);
   motor motor8(7);
+
+  analog_in analog_sensor(triport(A)); //parameters??? i do not understand wtf a triport is 
   
   controller control;
 

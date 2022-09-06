@@ -18,3 +18,5 @@ void vexcodeInit(void);
   extern motor motor8;
 
   extern controller control;
+
+  extern analog_in analog_sensor;

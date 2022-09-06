@@ -37,12 +37,25 @@ void decrease(){
   motorVelocity -= 0.25;
 }
 
+void analog_input(){
+  if(motor1.velocity(pct) > 0){
+    motor1.stop();
+  }
+  else{
+    motor1.spin(forward, motorVelocity, pct);
+  }
+}
+
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
+  control.Screen.print("current motor velocity: ", motorVelocity); //print motorvelocity to controller
+
   control.ButtonR2.pressed(increase); //increase motor velocity by 25%
   control.ButtonL2.pressed(decrease); //decrease motor velocity by 25%
+
+  analog_sensor.changed(analog_input); //start or stop motor 1 
 
   while(control.ButtonA.pressing()){
     motor1.spin(forward, motorVelocity, pct);
