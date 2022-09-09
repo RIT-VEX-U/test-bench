@@ -19,6 +19,15 @@ using namespace vex;
 double speed=4.0;
 int PCT=75;
 
+void speedUp(){
+  if(speed<=80)
+    speed*=1.25;
+  }
+void speedDown(){
+  if(speed>=.25)
+    speed*=.75;
+  }
+
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
@@ -76,12 +85,3 @@ int main() {
 
   }
 }
-void speedUp(){
-  if(speed<=80)
-    speed*=1.25;
-  }
-
-void speedDown(){
-  if(speed>=.25)
-    speed*=.75;
-  }
