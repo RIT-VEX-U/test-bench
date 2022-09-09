@@ -1,4 +1,4 @@
-#ifndef _HARDWARE_
+#define _HARDWARE_
 #define _HARDWARE_
 
 #include "vex.h"
@@ -12,5 +12,3 @@ namespace Hardware {
   
 
 }
-
-#endif
