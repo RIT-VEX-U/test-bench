@@ -11,4 +11,13 @@ namespace Hardware {
 
 }
 
+extern vex::motor motor1;
+extern vex::motor motor2;
+extern vex::motor motor3;
+extern vex::motor motor4;
+extern vex::motor motor5;
+extern vex::motor motor6;
+extern vex::motor motor7;
+extern vex::motor motor8;
+
 #endif
