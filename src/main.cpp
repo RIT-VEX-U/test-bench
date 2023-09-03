@@ -52,13 +52,41 @@ int main() {
     main_controller.ButtonDown,
   };
 
+  int motor_percents[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  int L2_pressed = 0;
+  int R2_pressed = 0;
+
   while (1) {
-    for (int i = 0; i < 8; i++) {
-      if (buttons[i].pressing()) {
-        motors[i]->spin(fwd);
-      } else {
-        motors[i]->stop();
+    if (main_controller.ButtonL2.pressing() && L2_pressed == 0) {
+      L2_pressed = 1;
+      for (int i = 0; i < 8; i++) {
+        if (buttons[i].pressing()) {
+          motor_percents[i] -= 25;
+          if (motor_percents[i] < 0) {
+            motor_percents[i] = 0;
+          }
+          motors[i]->spin(fwd, motor_percents[i], pct);
+        }
       }
+    } 
+    if (main_controller.ButtonR2.pressing() && R2_pressed == 0) {
+      R2_pressed = 1;
+      for (int i = 0; i < 8; i++) {
+        if (buttons[i].pressing()) {
+          motor_percents[i] += 25;
+          if (motor_percents[i] > 100) {
+            motor_percents[i] = 100;
+          }
+          motors[i]->spin(fwd, motor_percents[i], pct);
+        }
+      }
+    }
+
+    if (!main_controller.ButtonL2.pressing() && L2_pressed == 1) {
+      L2_pressed = 0;
+    }
+    if (!main_controller.ButtonR2.pressing() && R2_pressed == 1) {
+      R2_pressed = 0;
     }
   }
 }
