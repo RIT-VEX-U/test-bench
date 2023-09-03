@@ -19,4 +19,6 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
+  
+  wait(20,msec);
 }

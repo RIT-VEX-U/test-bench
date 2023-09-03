@@ -5,6 +5,11 @@ using namespace vex;
 // A global instance of brain used for printing to the V5 brain screen
 brain Brain;
 
+controller Controller;
+
+motor_group leftMotors = motor_group{FrntLft,BackLft};
+motor_group rightMotors = motor_group{FrntRgt,BackRgt};
+
 motor FrntLft = motor(PORT1);
 motor FrntRgt = motor(PORT2);
 motor BackLft = motor(PORT3);

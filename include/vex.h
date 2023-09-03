@@ -17,6 +17,7 @@
 
 #include "robot-config.h"
 #include "OPcontrol.h"
+#include "drive.h"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
