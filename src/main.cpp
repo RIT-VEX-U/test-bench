@@ -16,18 +16,19 @@
 using namespace vex;
 
 // double const VELOCITY = 1.0;
-vex directionType dir = fwd;
+vex::directionType dir = fwd;
+
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
   while (true) {
-    if (buttonA.pressing()) {
+    if (BA.pressing()) {
       motor1.spin(dir);
-    } else if (buttonB.pressing()) {
+    } else if (BB.pressing()) {
       motor2.spin(dir);
-    } else if (buttonX.pressing()) {
+    } else if (BX.pressing()) {
       motor3.spin(dir);
     }
   }

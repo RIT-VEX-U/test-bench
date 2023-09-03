@@ -10,5 +10,10 @@ namespace Hardware {
   extern controller master;
 
 }
-
+extern const vex::controller::button& BA;
+extern const vex::controller::button& BB;
+extern const vex::controller::button& BX;
+extern vex::motor motor1;
+extern vex::motor motor2;
+extern vex::motor motor3;
 #endif

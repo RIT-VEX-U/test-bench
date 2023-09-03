@@ -6,9 +6,9 @@ brain Hardware::v5_brain;
 
 controller Hardware::master(controllerType::primary);
 
-button& vex::controller::ButtonA = buttonA;
-button& vex::controller::ButtonB = buttonB;
-button& vex::controller::ButtonX = buttonX;
+const vex::controller::button& BA =Hardware::master.ButtonA;
+const vex::controller::button& BB =Hardware::master.ButtonB;
+const vex::controller::button& BX =Hardware::master.ButtonX;
 
 vex::motor motor1 = motor(PORT1);
 
