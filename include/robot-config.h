@@ -11,6 +11,8 @@ extern motor FrntLft;
 extern motor FrntRgt;
 extern motor BackLft;
 extern motor BackRgt;
+
+extern motor catty;
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *

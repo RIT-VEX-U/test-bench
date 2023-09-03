@@ -15,6 +15,8 @@ motor FrntRgt = motor(PORT2);
 motor BackLft = motor(PORT3);
 motor BackRgt = motor(PORT4);
 
+motor catty = motor(PORT5);
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *

@@ -17,7 +17,7 @@
 
 #include "robot-config.h"
 #include "OPcontrol.h"
-#include "drive.h"
+#include "catty.h"
 
 extern competition Competition;
 
