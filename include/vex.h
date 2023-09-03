@@ -19,6 +19,8 @@
 #include "OPcontrol.h"
 #include "drive.h"
 
+extern competition Competition;
+
 #define waitUntil(condition)                                                   \
   do {                                                                         \
     wait(5, msec);                                                             \

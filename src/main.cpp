@@ -13,12 +13,15 @@
 #include "vex.h"
 #include "hardware.h"
 
+competition Competition;
+
 using namespace vex;
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  
+  Competition.drivercontrol(opControl);
+
   wait(20,msec);
 }
