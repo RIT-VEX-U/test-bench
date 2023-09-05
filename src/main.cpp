@@ -17,6 +17,8 @@ using namespace vex;
 
 // double const VELOCITY = 1.0;
 vex::directionType dir = fwd;
+vex::timeUnits tUnits = sec;
+vex::percentUnits pUnits = pct;
 
 
 int main() {
@@ -24,12 +26,29 @@ int main() {
   vexcodeInit();
 
   while (true) {
-    if (BA.pressing()) {
-      motor1.spin(dir);
-    } else if (BB.pressing()) {
-      motor2.spin(dir);
-    } else if (BX.pressing()) {
-      motor3.spin(dir);
+    while (BA.pressing()) {
+      motor1.spin(dir, 1.0, pUnits);
+    } 
+    while (BB.pressing()) {
+      motor2.spin(dir, 1.0, pUnits);
+    } 
+    while (BX.pressing()) {
+      motor3.spin(dir, 1.0, pUnits);
+    } 
+    while (BY.pressing()) {
+      motor4.spin(dir, 1.0, pUnits);
+    }
+    while (BR.pressing()) {
+      motor5.spin(dir, 1.0, pUnits);
+    } 
+    while (BU.pressing()) {
+      motor6.spin(dir, 1.0, pUnits);
+    } 
+    while (BL.pressing()) {
+      motor7.spin(dir, 1.0, pUnits);
+    } 
+    while (BD.pressing()) {
+      motor8.spin(dir, 1.0, pUnits);
     }
   }
 
