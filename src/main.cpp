@@ -23,23 +23,20 @@ int main() {
 
   while (1) {
     if (Hardware::master.ButtonA.pressing()) {
-      motor5.spin(fwd);
+      motor5.spin(fwd, velocity, pct);
     } else {
       motor5.stop();
     }
-    // if (Hardware::master.ButtonR2.pressing() && velocity <= 100){
-    //   velocity += 25;
-    //   motor1.spin(fwd, velocity, pct);
-    // }
-    // if (Hardware::master.ButtonL2.pressing() && velocity >= 0){
-    //   velocity -= 25;
-    //   motor1.spin(fwd, velocity, pct);
-    // }
+    if (Hardware::master.ButtonR2.pressing() && velocity <= 100){
+      velocity += 25;
+      motor1.spin(fwd, velocity, pct);
+    }
+    if (Hardware::master.ButtonL2.pressing() && velocity >= 0){
+      velocity -= 25;
+      motor1.spin(fwd, velocity, pct);
+    }
   }
 
   // Hardware::master.ButtonA.pressed([](){motor1.spin(fwd);});
   // Hardware::master.ButtonA.released([](){motor1.stop();});
-  
-  // Hardware::master.ButtonR2.pressed([](){motor1.setVelocity((motor1.velocity(pct) + 25), pct);});
-  // Hardware::master.ButtonL2.pressed([](){motor1.setVelocity((motor1.velocity(pct) - 25), pct);});
 }
