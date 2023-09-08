@@ -19,12 +19,20 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  Hardware::master.ButtonA.pressing([](){motor1.spin(forward);});
-  Hardware::master.ButtonA.released([](){motor1.stop();});
+  while (1) {
+    if (Hardware::master.ButtonA.pressing()) 
+      motor1.spin(forward);
+    else {
+      motor1.stop();
+    }
+  }
 
   if (motor1.velocity(pct) >= 0 && motor1.velocity(pct) <= 100) {
     Hardware::master.ButtonR2.pressed([](){motor1.setVelocity((motor1.velocity(pct) + 0.25), pct);});
     Hardware::master.ButtonL2.pressed([](){motor1.setVelocity((motor1.velocity(pct) - 0.25), pct);});
   }
+
+  // Hardware::master.ButtonA.pressing([](){motor1.spin(forward);});
+  // Hardware::master.ButtonA.released([](){motor1.stop();});
 
 }
